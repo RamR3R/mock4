@@ -3,8 +3,11 @@ require("dotenv").config();
 const connection = mongoose.connect(process.env.mongoURL);
 const express = require('express');
 const tripRouter = require("./Routes/trip.Routes");
+const cors = require("cors");
 const app = express()
 app.use(express.json());
+app.use(cors());
+
 app.use("/api",tripRouter);
 
 app.get('/', (req, res) => res.send('Hello World!'));
